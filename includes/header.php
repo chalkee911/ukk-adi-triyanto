@@ -63,15 +63,7 @@ if ($user !== null) {
         </a>
 
         <div class="header-right">
-            <?php if ($user !== null): ?>
-                <div class="header-user">
-                    <span class="avatar avatar-sm"><?= e($initial) ?></span>
-                    <span class="header-user-text">
-                        <strong><?= e((string) $user['name']) ?></strong>
-                        <span>@<?= e((string) $user['username']) ?></span>
-                    </span>
-                </div>
-            <?php else: ?>
+            <?php if ($user === null): ?>
                 <div class="header-auth-links">
                     <?php if ($currentScript !== 'login.php'): ?>
                         <a class="btn btn-soft btn-sm" href="<?= BASE_URL ?>/login.php">Masuk</a>
@@ -148,23 +140,23 @@ if ($user !== null) {
                         <span>Riwayat Transaksi</span>
                     </a>
                 </nav>
+            </div>
 
-                <div class="sidebar-user">
-                    <span class="avatar"><?= e($initial) ?></span>
-                    <div class="sidebar-user-text">
-                        <strong><?= e((string) $user['name']) ?></strong>
-                        <span>@<?= e((string) $user['username']) ?></span>
-                    </div>
-                    <form method="post" action="<?= BASE_URL ?>/logout.php" class="logout-form">
-                        <?= csrf_field() ?>
-                        <button type="submit" class="logout-button" aria-label="Keluar dari akun">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-                                <path d="M14 5h4a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-4" stroke-linecap="round"/>
-                                <path d="M10 8 6 12l4 4M6 12h8" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </form>
+            <div class="sidebar-user">
+                <span class="avatar"><?= e($initial) ?></span>
+                <div class="sidebar-user-text">
+                    <strong><?= e((string) $user['name']) ?></strong>
+                    <span>@<?= e((string) $user['username']) ?></span>
                 </div>
+                <form method="post" action="<?= BASE_URL ?>/logout.php" class="logout-form">
+                    <?= csrf_field() ?>
+                    <button type="submit" class="logout-button" aria-label="Keluar dari akun">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                            <path d="M14 5h4a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-4" stroke-linecap="round"/>
+                            <path d="M10 8 6 12l4 4M6 12h8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </aside>
     <?php endif; ?>

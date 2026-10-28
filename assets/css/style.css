@@ -26,6 +26,7 @@
   --control-height: 44px;
   --max-width: 1440px;
   --sidebar-width: 280px;
+  --header-height: 64px;
   --transition: 0.2s ease;
 }
 
@@ -204,17 +205,6 @@ img {
   flex-shrink: 0;
 }
 
-.header-user {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: var(--bg);
-  border: 1px solid var(--shadow-dark);
-  border-radius: var(--radius-control);
-  padding: 0.25rem 0.75rem;
-  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
-}
-
 .avatar {
   width: 32px;
   height: 32px;
@@ -234,30 +224,6 @@ img {
   width: 28px;
   height: 28px;
   font-size: 0.8rem;
-}
-
-.header-user-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-  min-width: 0;
-}
-
-.header-user-text strong {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.header-user-text span {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .header-auth-links {
@@ -288,6 +254,15 @@ img {
   flex-direction: column;
   height: 100%;
   min-height: 0;
+}
+
+/* Desktop: pin sidebar to the viewport so the account block stays visible. */
+@media (min-width: 992px) {
+  .sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+  }
 }
 
 .sidebar-body {
@@ -387,6 +362,7 @@ img {
   border-top: 1px solid var(--shadow-dark);
   background: var(--surface);
   margin-top: auto;
+  flex-shrink: 0;
 }
 
 .sidebar-user .avatar {
